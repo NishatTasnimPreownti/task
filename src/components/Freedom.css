@@ -1,0 +1,75 @@
+.freedom {
+  background: #0e1420;
+  padding-bottom: 90px;
+}
+
+.freedom__photo {
+  height: 380px;
+  background: linear-gradient(120deg, #1a2340 0%, #2c3868 45%, #4a5aa8 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.freedom__photo::before {
+  content: "🚗 💬 😊";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  opacity: 0.35;
+  letter-spacing: 24px;
+}
+
+.freedom__photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14, 20, 32, 0) 40%, #0e1420 100%);
+}
+
+.freedom__title {
+  color: #fff;
+  padding-top: 64px;
+}
+
+.freedom__grid {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.freedom__step {
+  background: #171e2e;
+  border: 1px solid #262f45;
+  border-radius: var(--radius-md);
+  padding: 30px 26px;
+}
+
+.freedom__icon {
+  font-size: 30px;
+}
+
+.freedom__step h3 {
+  margin-top: 24px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.freedom__step p {
+  margin-top: 10px;
+  color: #98a0b3;
+  font-size: 14.5px;
+}
+
+@media (max-width: 760px) {
+  .freedom__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .freedom__photo {
+    height: 260px;
+  }
+}

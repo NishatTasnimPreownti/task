@@ -1,0 +1,79 @@
+.cta-duo__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.cta-duo__card {
+  border-radius: var(--radius-lg);
+  padding: 48px 40px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+}
+
+.cta-duo__card--primary {
+  background: linear-gradient(135deg, #2452ff, #1638c9);
+  color: #fff;
+}
+
+.cta-duo__card--primary h3 {
+  font-size: 26px;
+  font-weight: 800;
+  max-width: 360px;
+}
+
+.cta-duo__card--primary .btn-primary {
+  background: #fff;
+  color: var(--color-primary);
+  box-shadow: none;
+  align-self: flex-start;
+}
+
+.cta-duo__card--dark {
+  background: #0e1420;
+  color: #fff;
+}
+
+.cta-duo__badges {
+  display: flex;
+  gap: 10px;
+}
+
+.cta-duo__badges span {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-yellow);
+}
+
+.cta-duo__card--dark h3 {
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.cta-duo__card--dark .btn-outline {
+  align-self: flex-start;
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.cta-duo__card--dark .btn-outline:hover {
+  border-color: #fff;
+}
+
+@media (max-width: 760px) {
+  .cta-duo__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-duo__card {
+    padding: 36px 28px;
+  }
+}

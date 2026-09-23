@@ -1,0 +1,50 @@
+.together {
+  background: #0e1420;
+}
+
+.together .section-title {
+  color: #fff;
+}
+
+.together__grid {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.together__card {
+  background: #171e2e;
+  border: 1px solid #262f45;
+  border-radius: var(--radius-md);
+  padding: 34px 26px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.together__card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+}
+
+.together__icon {
+  font-size: 30px;
+}
+
+.together__card h3 {
+  margin-top: 20px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.together__card p {
+  margin-top: 10px;
+  color: #98a0b3;
+  font-size: 14.5px;
+}
+
+@media (max-width: 760px) {
+  .together__grid {
+    grid-template-columns: 1fr;
+  }
+}

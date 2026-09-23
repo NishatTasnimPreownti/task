@@ -112,35 +112,42 @@ export default function StatsBanner() {
               </radialGradient>
             </defs>
 
-            <ellipse cx="120" cy="86" rx="105" ry="7" fill="rgba(0,0,0,0.18)" />
+            <ellipse cx="120" cy="90" rx="100" ry="6" fill="rgba(0,0,0,0.18)" />
 
-            <path
-              d="M18 62c0-5 4-9 10-10l14-2 12-18c3-5 9-8 15-8h58c7 0 13 4 16 10l9 17 16 3c6 1 10 6 10 12v9c0 4-3 7-7 7H23c-3 0-5-2-5-5v-13Z"
+            {/* body */}
+            <rect
+              x="25"
+              y="55"
+              width="190"
+              height="24"
+              rx="12"
               fill="url(#carBody)"
               stroke="#c4cddc"
               strokeWidth="1"
             />
 
+            {/* cabin / windows */}
             <path
-              d="M60 42l10-15c2-3 5-5 9-5h50c4 0 8 2 10 6l8 14-3 1H61l-1-1Z"
+              d="M85 55 L99 27 Q102 22 108 22 L162 22 Q168 22 171 27 L185 55 Z"
               fill="url(#carGlass)"
+              stroke="#c4cddc"
+              strokeWidth="1"
             />
-            <path d="M92 24h35c3 0 5 1 6 4l5 9H93l-1-13Z" fill="rgba(255,255,255,0.25)" />
+            <line x1="134" y1="23" x2="134" y2="55" stroke="#e9edf6" strokeWidth="3" />
 
-            <rect x="86" y="41" width="3" height="18" fill="#c4cddc" />
+            {/* lights: taillight (rear, left) + headlight (front, right) */}
+            <circle cx="32" cy="64" r="3" fill="#ff8a8a" />
+            <circle cx="208" cy="64" r="3" fill="#ffe58a" />
 
-            <circle cx="45" cy="34" r="3" fill="#ffe58a" />
-            <circle cx="205" cy="38" r="3" fill="#ff8a8a" />
-
-            <g className="stats__wheel" style={{ transformOrigin: "58px 70px" }}>
-              <circle cx="58" cy="70" r="16" fill="#12151f" />
-              <circle cx="58" cy="70" r="10" fill="url(#rim)" />
-              <circle cx="58" cy="70" r="3" fill="#3a4050" />
+            <g className="stats__wheel" style={{ transformOrigin: "70px 80px" }}>
+              <circle cx="70" cy="80" r="15" fill="#12151f" />
+              <circle cx="70" cy="80" r="9" fill="url(#rim)" />
+              <circle cx="70" cy="80" r="3" fill="#3a4050" />
             </g>
-            <g className="stats__wheel" style={{ transformOrigin: "175px 70px" }}>
-              <circle cx="175" cy="70" r="16" fill="#12151f" />
-              <circle cx="175" cy="70" r="10" fill="url(#rim)" />
-              <circle cx="175" cy="70" r="3" fill="#3a4050" />
+            <g className="stats__wheel" style={{ transformOrigin: "195px 80px" }}>
+              <circle cx="195" cy="80" r="15" fill="#12151f" />
+              <circle cx="195" cy="80" r="9" fill="url(#rim)" />
+              <circle cx="195" cy="80" r="3" fill="#3a4050" />
             </g>
           </svg>
         </div>

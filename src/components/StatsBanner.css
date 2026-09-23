@@ -53,20 +53,54 @@
   z-index: 1;
 }
 
-.stats__skyline svg:first-child {
+.stats__skyline-art {
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 100%;
 }
 
-.stats__car {
+.stats__car-wrap {
   position: absolute;
   bottom: 8px;
-  left: 6%;
+  left: 0;
   width: 220px;
   height: auto;
   filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.25));
+  animation: stats-drive 11s linear infinite;
+}
+
+.stats__car {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.stats__wheel {
+  transform-box: fill-box;
+  animation: stats-wheel-spin 0.5s linear infinite;
+}
+
+@keyframes stats-drive {
+  0% {
+    transform: translateX(-260px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 40px));
+  }
+}
+
+@keyframes stats-wheel-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stats__car-wrap,
+  .stats__wheel {
+    animation: none;
+  }
 }
 
 @media (max-width: 760px) {
@@ -79,7 +113,7 @@
     padding-bottom: 120px;
   }
 
-  .stats__car {
+  .stats__car-wrap {
     width: 150px;
   }
 }

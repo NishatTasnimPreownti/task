@@ -1,0 +1,138 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1c2333;
+}
+
+.header__logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.header__nav ul {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.header__nav a {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #3a3f4b;
+  transition: color 0.15s ease;
+}
+
+.header__nav a:hover {
+  color: var(--color-primary);
+}
+
+.header__nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header__lang {
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--color-light-bg);
+  color: #3a3f4b;
+}
+
+.header__login {
+  padding: 10px 22px;
+}
+
+.header__burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+}
+
+.header__burger span {
+  width: 24px;
+  height: 2px;
+  background: #1c2333;
+  border-radius: 2px;
+}
+
+@media (max-width: 960px) {
+  .header__nav ul {
+    gap: 16px;
+  }
+  .header__nav a {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 800px) {
+  .header__burger {
+    display: flex;
+  }
+
+  .header__nav {
+    position: absolute;
+    top: 76px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px 24px 28px;
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .header__nav.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .header__nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .header__nav-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

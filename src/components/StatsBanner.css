@@ -78,6 +78,7 @@
 
 .stats__wheel {
   transform-box: fill-box;
+  transform-origin: center;
   animation: stats-wheel-spin 0.5s linear infinite;
 }
 

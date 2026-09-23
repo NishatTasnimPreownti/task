@@ -139,12 +139,12 @@ export default function StatsBanner() {
             <circle cx="32" cy="64" r="3" fill="#ff8a8a" />
             <circle cx="208" cy="64" r="3" fill="#ffe58a" />
 
-            <g className="stats__wheel" style={{ transformOrigin: "70px 80px" }}>
+            <g className="stats__wheel">
               <circle cx="70" cy="80" r="15" fill="#12151f" />
               <circle cx="70" cy="80" r="9" fill="url(#rim)" />
               <circle cx="70" cy="80" r="3" fill="#3a4050" />
             </g>
-            <g className="stats__wheel" style={{ transformOrigin: "195px 80px" }}>
+            <g className="stats__wheel">
               <circle cx="195" cy="80" r="15" fill="#12151f" />
               <circle cx="195" cy="80" r="9" fill="url(#rim)" />
               <circle cx="195" cy="80" r="3" fill="#3a4050" />

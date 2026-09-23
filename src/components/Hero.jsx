@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 import "./Hero.css";
 
 const TRIP_TYPES = ["One Way", "Round Way", "Hourly"];
@@ -7,21 +8,46 @@ export default function Hero() {
   const [activeTab, setActiveTab] = useState("Car Rental");
   const [tripType, setTripType] = useState("One Way");
 
+  const heroRef = useRef(null);
+  const headingRef = useRef(null);
+  const paraRef = useRef(null);
+  const ctaRef = useRef(null);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        defaults: { ease: "power3.out" },
+      });
+
+      tl.from(headingRef.current, { opacity: 0, y: 30, duration: 0.7 })
+        .from(paraRef.current, { opacity: 0, y: 20, duration: 0.6 }, "-=0.4")
+        .from(ctaRef.current, { opacity: 0, y: 20, duration: 0.6 }, "-=0.35")
+        .from(
+          cardRef.current,
+          { opacity: 0, y: 40, scale: 0.98, duration: 0.7 },
+          "-=0.3"
+        );
+    }, heroRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="hero">
+    <section className="hero" ref={heroRef}>
       <div className="container hero__inner">
         <div className="hero__text">
-          <h1>Assurance of Effortless Travel</h1>
-          <p>
+          <h1 ref={headingRef}>Assurance of Effortless Travel</h1>
+          <p ref={paraRef}>
             Choose your city, pick your car and enjoy the journey with
             Garibook&rsquo;s best drivers.
           </p>
-          <button className="btn btn-yellow hero__download">
+          <button ref={ctaRef} className="btn btn-yellow hero__download">
             Download App <span>&rarr;</span>
           </button>
         </div>
 
-        <div className="hero__card">
+        <div className="hero__card" ref={cardRef}>
           <div className="hero__tabs">
             {["Car Rental", "Airport Rental"].map((tab) => (
               <button

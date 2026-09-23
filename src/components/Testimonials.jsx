@@ -1,3 +1,4 @@
+import { useScrollReveal } from "../hooks/useScrollReveal";
 import "./Testimonials.css";
 
 const TESTIMONIALS = [
@@ -22,12 +23,14 @@ const TESTIMONIALS = [
 ];
 
 export default function Testimonials() {
+  const gridRef = useScrollReveal(".testimonials__card");
+
   return (
     <section className="testimonials section">
       <div className="container">
         <h2 className="section-title">Our Passengers Speak For Us</h2>
 
-        <div className="testimonials__grid">
+        <div className="testimonials__grid" ref={gridRef}>
           {TESTIMONIALS.map((t) => (
             <div className="testimonials__card" key={t.name}>
               <span className="testimonials__quote-mark">&ldquo;</span>

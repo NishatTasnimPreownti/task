@@ -1,3 +1,4 @@
+import { useScrollReveal } from "../hooks/useScrollReveal";
 import "./News.css";
 
 const NEWS = [
@@ -20,12 +21,14 @@ const NEWS = [
 ];
 
 export default function News() {
+  const gridRef = useScrollReveal(".news__card");
+
   return (
     <section className="news section">
       <div className="container">
         <h2 className="section-title">We Featured by Top news Platforms</h2>
 
-        <div className="news__grid">
+        <div className="news__grid" ref={gridRef}>
           {NEWS.map((item) => (
             <article className="news__card" key={item.title}>
               <div className="news__thumb" />

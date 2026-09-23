@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { CarIcon, RideShareIcon, PlaneIcon, ClockIcon } from "./icons";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 import "./Services.css";
 
 const TABS = ["Rides", "Garibook Business", "Garibook Club", "VMS"];
@@ -30,6 +31,7 @@ const SERVICES = [
 
 export default function Services() {
   const [activeTab, setActiveTab] = useState("Rides");
+  const gridRef = useScrollReveal(".services__card");
 
   return (
     <section className="services section">
@@ -53,7 +55,7 @@ export default function Services() {
           <br /> One Platform
         </h2>
 
-        <div className="services__grid">
+        <div className="services__grid" ref={gridRef}>
           {SERVICES.map((service) => {
             const Icon = service.icon;
             return (

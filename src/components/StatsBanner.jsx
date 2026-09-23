@@ -1,13 +1,53 @@
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./StatsBanner.css";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const STATS = [
-  { value: "300,000+", label: "Trip Requests" },
-  { value: "850,000+", label: "Total Customers" },
-  { value: "35,000+", label: "Active Drivers" },
-  { value: "64", label: "District Covered" },
+  { to: 300000, suffix: "+", label: "Trip Requests" },
+  { to: 850000, suffix: "+", label: "Total Customers" },
+  { to: 35000, suffix: "+", label: "Active Drivers" },
+  { to: 64, suffix: "", label: "District Covered" },
 ];
 
 export default function StatsBanner() {
+  const gridRef = useRef(null);
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const valueEls = grid.querySelectorAll(".stats__value");
+
+    const ctx = gsap.context(() => {
+      valueEls.forEach((el, i) => {
+        const stat = STATS[i];
+        const counter = { value: 0 };
+
+        ScrollTrigger.create({
+          trigger: grid,
+          start: "top 85%",
+          once: true,
+          onEnter: () =>
+            gsap.to(counter, {
+              value: stat.to,
+              duration: 1.6,
+              ease: "power2.out",
+              onUpdate: () => {
+                el.textContent =
+                  Math.round(counter.value).toLocaleString("en-US") +
+                  stat.suffix;
+              },
+            }),
+        });
+      });
+    }, grid);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section className="stats">
       <div className="container stats__inner">
@@ -15,10 +55,10 @@ export default function StatsBanner() {
           From Everyday Rides to <br /> Meaningful Journeys
         </h2>
 
-        <div className="stats__grid">
+        <div className="stats__grid" ref={gridRef}>
           {STATS.map((stat) => (
             <div className="stats__item" key={stat.label}>
-              <span className="stats__value">{stat.value}</span>
+              <span className="stats__value">0{stat.suffix}</span>
               <span className="stats__label">{stat.label}</span>
             </div>
           ))}

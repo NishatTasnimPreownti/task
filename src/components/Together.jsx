@@ -1,4 +1,5 @@
 import { CompassIcon, ShieldIcon, CarIcon } from "./icons";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 import "./Together.css";
 
 const CARDS = [
@@ -20,6 +21,8 @@ const CARDS = [
 ];
 
 export default function Together() {
+  const gridRef = useScrollReveal(".together__card");
+
   return (
     <section className="together section">
       <div className="container">
@@ -27,7 +30,7 @@ export default function Together() {
           More Than Miles &mdash; <br /> We Bring People Together
         </h2>
 
-        <div className="together__grid">
+        <div className="together__grid" ref={gridRef}>
           {CARDS.map((card) => {
             const Icon = card.icon;
             return (

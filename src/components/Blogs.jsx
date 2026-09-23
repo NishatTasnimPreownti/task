@@ -1,3 +1,4 @@
+import { useScrollReveal } from "../hooks/useScrollReveal";
 import "./Blogs.css";
 
 const BLOGS = [
@@ -16,6 +17,8 @@ const BLOGS = [
 ];
 
 export default function Blogs() {
+  const gridRef = useScrollReveal(".blogs__card");
+
   return (
     <section className="blogs section">
       <div className="container">
@@ -30,7 +33,7 @@ export default function Blogs() {
           <button className="btn btn-outline">Show All Blogs</button>
         </div>
 
-        <div className="blogs__grid">
+        <div className="blogs__grid" ref={gridRef}>
           {BLOGS.map((blog) => (
             <article className="blogs__card" key={blog.title}>
               <div className="blogs__thumb" />

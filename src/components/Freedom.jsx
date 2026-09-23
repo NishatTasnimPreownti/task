@@ -1,4 +1,5 @@
 import { CarIcon, DriverIcon, FareIcon } from "./icons";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 import "./Freedom.css";
 
 const STEPS = [
@@ -20,6 +21,8 @@ const STEPS = [
 ];
 
 export default function Freedom() {
+  const gridRef = useScrollReveal(".freedom__step");
+
   return (
     <section className="freedom">
       <div className="freedom__photo" role="img" aria-label="Couple enjoying a ride and looking at a phone">
@@ -29,7 +32,7 @@ export default function Freedom() {
       <div className="container">
         <h2 className="section-title freedom__title">Freedom in Every Journey</h2>
 
-        <div className="freedom__grid">
+        <div className="freedom__grid" ref={gridRef}>
           {STEPS.map((step) => {
             const Icon = step.icon;
             return (

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { CarIcon, TargetIcon, PinIcon, CalendarIcon } from "./icons";
 import "./Hero.css";
 
 const TRIP_TYPES = ["One Way", "Round Way", "Hourly"];
@@ -38,13 +39,15 @@ export default function Hero() {
       <div className="container hero__inner">
         <div className="hero__text">
           <h1 ref={headingRef}>Assurance of Effortless Travel</h1>
-          <p ref={paraRef}>
-            Choose your city, pick your car and enjoy the journey with
-            Garibook&rsquo;s best drivers.
-          </p>
-          <button ref={ctaRef} className="btn btn-yellow hero__download">
-            Download App <span>&rarr;</span>
-          </button>
+          <div className="hero__text-side">
+            <p ref={paraRef}>
+              Choose your city, pick your car and enjoy the journey with
+              Garibook&rsquo;s best drivers.
+            </p>
+            <button ref={ctaRef} className="btn btn-yellow hero__download">
+              Download App <span>&rarr;</span>
+            </button>
+          </div>
         </div>
 
         <div className="hero__card" ref={cardRef}>
@@ -67,7 +70,7 @@ export default function Hero() {
             <div className="hero__form-grid">
               <label className="hero__field">
                 <span>
-                  🚗 Choose a Car <b>*</b>
+                  <CarIcon width={18} height={18} /> Choose a Car <b>*</b>
                 </span>
                 <select defaultValue="">
                   <option value="" disabled>
@@ -80,23 +83,43 @@ export default function Hero() {
                 </select>
               </label>
 
-              <label className="hero__field">
-                <span>
-                  🟡 Pickup Location <b>*</b>
-                </span>
-                <input type="text" placeholder="Enter Pickup Location" />
-              </label>
+              {activeTab === "Airport Rental" ? (
+                <label className="hero__field">
+                  <span>
+                    <TargetIcon width={18} height={18} /> Pickup Airport{" "}
+                    <b>*</b>
+                  </span>
+                  <select defaultValue="">
+                    <option value="" disabled>
+                      Select Airport
+                    </option>
+                    <option>Hazrat Shahjalal International Airport</option>
+                    <option>Shah Amanat International Airport</option>
+                    <option>Osmani International Airport</option>
+                  </select>
+                </label>
+              ) : (
+                <label className="hero__field">
+                  <span>
+                    <TargetIcon width={18} height={18} /> Pickup Location{" "}
+                    <b>*</b>
+                  </span>
+                  <input type="text" placeholder="Enter Pickup Location" />
+                </label>
+              )}
 
               <label className="hero__field">
                 <span>
-                  📍 Drop-off Location <b>*</b>
+                  <PinIcon width={18} height={18} /> Drop-off Location{" "}
+                  <b>*</b>
                 </span>
                 <input type="text" placeholder="Enter Drop-off Location" />
               </label>
 
               <label className="hero__field">
                 <span>
-                  📅 Pickup Date &amp; Time <b>*</b>
+                  <CalendarIcon width={18} height={18} /> Pickup Date &amp;
+                  Time <b>*</b>
                 </span>
                 <input type="text" placeholder="MM/DD/YYYY 00:00 PM" />
               </label>

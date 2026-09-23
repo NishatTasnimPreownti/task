@@ -8,25 +8,34 @@
 }
 
 .hero__text {
-  max-width: 640px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
 }
 
 .hero__text h1 {
-  font-size: clamp(34px, 5vw, 56px);
+  font-size: clamp(34px, 4vw, 52px);
   font-weight: 800;
   line-height: 1.1;
   color: #12172a;
+  max-width: 560px;
 }
 
-.hero__text p {
-  margin-top: 18px;
+.hero__text-side {
+  max-width: 420px;
+  padding-top: 6px;
+  flex-shrink: 0;
+}
+
+.hero__text-side p {
   font-size: 17px;
   color: var(--color-muted);
-  max-width: 460px;
 }
 
 .hero__download {
-  margin-top: 26px;
+  margin-top: 22px;
 }
 
 .hero__card {
@@ -86,7 +95,12 @@
   color: #2b3040;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+}
+
+.hero__field span svg {
+  flex-shrink: 0;
+  color: #1c2333;
 }
 
 .hero__field span b {
@@ -173,6 +187,18 @@
 @media (max-width: 860px) {
   .hero__form-grid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero__text {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hero__text-side {
+    max-width: none;
+    padding-top: 0;
   }
 }
 

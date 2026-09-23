@@ -16,8 +16,8 @@ export default function Hero() {
             Choose your city, pick your car and enjoy the journey with
             Garibook&rsquo;s best drivers.
           </p>
-          <button className="btn btn-primary hero__download">
-            Download App
+          <button className="btn btn-yellow hero__download">
+            Download App <span>&rarr;</span>
           </button>
         </div>
 

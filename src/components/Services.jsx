@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CarIcon, RideShareIcon, PlaneIcon, ClockIcon } from "./icons";
 import "./Services.css";
 
 const TABS = ["Rides", "Garibook Business", "Garibook Club", "VMS"];
@@ -7,23 +8,23 @@ const SERVICES = [
   {
     title: "Intercity Car Rental",
     desc: "Travel between cities with comfort and confidence.",
-    icon: "🚕",
+    icon: CarIcon,
     highlight: true,
   },
   {
     title: "Ride share",
     desc: "Go anywhere in the city, quickly and easily.",
-    icon: "🚙",
+    icon: RideShareIcon,
   },
   {
     title: "Airport Rental",
     desc: "Whether you're flying abroad or returning home, enjoy a comfortable and worry-free airport journey.",
-    icon: "✈️",
+    icon: PlaneIcon,
   },
   {
     title: "Hourly Rental",
     desc: "Rent a car by the hour, tailored to your needs.",
-    icon: "⏱️",
+    icon: ClockIcon,
   },
 ];
 
@@ -53,16 +54,21 @@ export default function Services() {
         </h2>
 
         <div className="services__grid">
-          {SERVICES.map((service) => (
-            <div
-              className={`services__card ${service.highlight ? "is-highlight" : ""}`}
-              key={service.title}
-            >
-              <span className="services__icon">{service.icon}</span>
-              <h3>{service.title}</h3>
-              <p>{service.desc}</p>
-            </div>
-          ))}
+          {SERVICES.map((service) => {
+            const Icon = service.icon;
+            return (
+              <div
+                className={`services__card ${service.highlight ? "is-highlight" : ""}`}
+                key={service.title}
+              >
+                <span className="services__icon">
+                  <Icon />
+                </span>
+                <h3>{service.title}</h3>
+                <p>{service.desc}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

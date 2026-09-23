@@ -1,7 +1,7 @@
 :root {
-  --color-primary: #2452ff;
-  --color-primary-dark: #1638c9;
-  --color-yellow: #f6c915;
+  --color-primary: #0e52ff;
+  --color-primary-dark: #0a3fcc;
+  --color-yellow: #fdd300;
   --color-dark: #0e1420;
   --color-text: #1a1f2b;
   --color-muted: #6b7280;
@@ -11,7 +11,8 @@
   --radius-md: 14px;
   --radius-sm: 8px;
   --container-width: 1180px;
-  --font-main: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-main: "Montserrat", "Segoe UI", system-ui, -apple-system, Roboto,
+    "Helvetica Neue", Arial, sans-serif;
 }
 
 * {
@@ -82,9 +83,9 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   padding: 14px 28px;
-  border-radius: 10px;
+  border-radius: 15px;
   font-weight: 600;
   font-size: 15px;
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
@@ -94,11 +95,22 @@ button {
 .btn-primary {
   background: var(--color-primary);
   color: #fff;
-  box-shadow: 0 10px 24px rgba(36, 82, 255, 0.25);
+  box-shadow: 0 10px 24px rgba(14, 82, 255, 0.25);
 }
 
 .btn-primary:hover {
   background: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn-yellow {
+  background: var(--color-yellow);
+  color: #14171f;
+  box-shadow: 0 10px 24px rgba(253, 211, 0, 0.3);
+}
+
+.btn-yellow:hover {
+  background: #e6bf00;
   transform: translateY(-1px);
 }
 

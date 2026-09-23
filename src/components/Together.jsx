@@ -1,20 +1,21 @@
+import { CompassIcon, ShieldIcon, CarIcon } from "./icons";
 import "./Together.css";
 
 const CARDS = [
   {
     title: "Freedom",
     desc: "Choose your fare, vehicle and driver.",
-    icon: "🧭",
+    icon: CompassIcon,
   },
   {
     title: "Safe travel",
     desc: "Choose your fare, vehicle and driver.",
-    icon: "🛡️",
+    icon: ShieldIcon,
   },
   {
     title: "Choose Your Preferred Car",
     desc: "Pick a ride that matches your comfort and budget.",
-    icon: "🚘",
+    icon: CarIcon,
   },
 ];
 
@@ -27,13 +28,18 @@ export default function Together() {
         </h2>
 
         <div className="together__grid">
-          {CARDS.map((card) => (
-            <div className="together__card" key={card.title}>
-              <span className="together__icon">{card.icon}</span>
-              <h3>{card.title}</h3>
-              <p>{card.desc}</p>
-            </div>
-          ))}
+          {CARDS.map((card) => {
+            const Icon = card.icon;
+            return (
+              <div className="together__card" key={card.title}>
+                <span className="together__icon">
+                  <Icon />
+                </span>
+                <h3>{card.title}</h3>
+                <p>{card.desc}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

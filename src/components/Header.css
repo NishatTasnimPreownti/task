@@ -71,6 +71,7 @@
 
 .header__login {
   padding: 10px 22px;
+  border-radius: 6px;
 }
 
 .header__burger {

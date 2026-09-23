@@ -35,11 +35,8 @@
   max-width: 380px;
 }
 
-.app-banner__inner .btn-primary {
+.app-banner__inner .btn-yellow {
   margin-top: 26px;
-  background: #fff;
-  color: var(--color-primary);
-  box-shadow: none;
 }
 
 .app-banner__phone {

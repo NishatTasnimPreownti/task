@@ -20,6 +20,16 @@ export function CarIcon(props) {
   );
 }
 
+export function LuggageIcon(props) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="6" y="8" width="12" height="13" rx="2" />
+      <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+      <path d="M12 12v4" />
+    </svg>
+  );
+}
+
 export function RideShareIcon(props) {
   return (
     <svg {...base} {...props}>

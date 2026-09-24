@@ -1,9 +1,9 @@
 .together {
-  background: #0e1420;
+  background: #fff;
 }
 
 .together .section-title {
-  color: #fff;
+  color: #1c2333;
 }
 
 .together__grid {
@@ -14,40 +14,29 @@
 }
 
 .together__card {
-  background: #171e2e;
-  border: 1px solid #262f45;
   border-radius: var(--radius-md);
-  padding: 34px 26px;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .together__card:hover {
   transform: translateY(-4px);
-  border-color: var(--color-primary);
+  box-shadow: 0 20px 30px rgba(20, 30, 60, 0.1);
 }
 
-.together__icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(36, 82, 255, 0.18);
-  color: #7a97ff;
+.together__photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
 }
 
 .together__card h3 {
-  margin-top: 20px;
-  color: #fff;
+  margin-top: 18px;
+  color: #1c2333;
   font-size: 18px;
   font-weight: 700;
-}
-
-.together__card p {
-  margin-top: 10px;
-  color: #98a0b3;
-  font-size: 14.5px;
+  text-align: center;
 }
 
 @media (max-width: 760px) {

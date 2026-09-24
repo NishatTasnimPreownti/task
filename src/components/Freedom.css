@@ -3,38 +3,21 @@
   padding-bottom: 90px;
 }
 
-.freedom__photo {
-  height: 380px;
-  background: linear-gradient(120deg, #1a2340 0%, #2c3868 45%, #4a5aa8 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-.freedom__photo::before {
-  content: "🚗 💬 😊";
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 64px;
-  opacity: 0.35;
-  letter-spacing: 24px;
-}
-
-.freedom__photo-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(14, 20, 32, 0) 40%, #0e1420 100%);
-}
-
 .freedom__title {
   color: #fff;
   padding-top: 64px;
 }
 
+.freedom__photo {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  margin-top: 32px;
+}
+
 .freedom__grid {
-  margin-top: 44px;
+  margin-top: 36px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;

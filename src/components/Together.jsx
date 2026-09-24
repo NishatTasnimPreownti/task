@@ -1,22 +1,24 @@
-import { CompassIcon, ShieldIcon, CarIcon } from "./icons";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import p1 from "../assets/p1.png";
+import p2 from "../assets/p2.png";
+import p3 from "../assets/p3.png";
 import "./Together.css";
 
 const CARDS = [
   {
-    title: "Freedom",
-    desc: "Choose your fare, vehicle and driver.",
-    icon: CompassIcon,
+    title: "Airport Rentals",
+    photo: p1,
+    alt: "A family greeted at the airport with their luggage and a rental car",
   },
   {
-    title: "Safe travel",
-    desc: "Choose your fare, vehicle and driver.",
-    icon: ShieldIcon,
+    title: "Family Trips",
+    photo: p2,
+    alt: "A family enjoying a ride together in the back seat of a car",
   },
   {
-    title: "Choose Your Preferred Car",
-    desc: "Pick a ride that matches your comfort and budget.",
-    icon: CarIcon,
+    title: "Long Tours",
+    photo: p3,
+    alt: "A group of friends on a road trip beside their van at the beach",
   },
 ];
 
@@ -31,18 +33,12 @@ export default function Together() {
         </h2>
 
         <div className="together__grid" ref={gridRef}>
-          {CARDS.map((card) => {
-            const Icon = card.icon;
-            return (
-              <div className="together__card" key={card.title}>
-                <span className="together__icon">
-                  <Icon />
-                </span>
-                <h3>{card.title}</h3>
-                <p>{card.desc}</p>
-              </div>
-            );
-          })}
+          {CARDS.map((card) => (
+            <div className="together__card" key={card.title}>
+              <img className="together__photo" src={card.photo} alt={card.alt} />
+              <h3>{card.title}</h3>
+            </div>
+          ))}
         </div>
       </div>
     </section>

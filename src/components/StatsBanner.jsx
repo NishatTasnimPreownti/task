@@ -12,6 +12,43 @@ const STATS = [
   { to: 64, suffix: "", label: "District Covered" },
 ];
 
+const BUILDINGS = [
+  { x: 0, y: 60, w: 60, h: 100, roof: false },
+  { x: 70, y: 30, w: 50, h: 130, roof: true },
+  { x: 130, y: 80, w: 40, h: 80, roof: false },
+  { x: 180, y: 10, w: 55, h: 150, roof: true },
+  { x: 250, y: 55, w: 45, h: 105, roof: false },
+  { x: 310, y: 20, w: 60, h: 140, roof: true },
+  { x: 400, y: 65, w: 50, h: 95, roof: false },
+  { x: 470, y: 35, w: 45, h: 125, roof: true },
+  { x: 540, y: 75, w: 40, h: 85, roof: false },
+  { x: 610, y: 25, w: 55, h: 135, roof: true },
+  { x: 690, y: 60, w: 45, h: 100, roof: false },
+  { x: 760, y: 15, w: 55, h: 145, roof: true },
+  { x: 840, y: 70, w: 40, h: 90, roof: false },
+  { x: 900, y: 40, w: 50, h: 120, roof: true },
+  { x: 1000, y: 20, w: 60, h: 140, roof: true },
+  { x: 1070, y: 55, w: 45, h: 105, roof: false },
+  { x: 1130, y: 10, w: 55, h: 150, roof: true },
+];
+
+const LAMP_X = [40, 100, 150, 210, 270, 335, 390, 450, 510, 570, 630, 690, 750, 810, 870, 930, 990, 1050, 1110, 1170];
+
+function windowRows(building) {
+  const rows = [];
+  const cols = Math.max(2, Math.floor(building.w / 14));
+  const rowCount = Math.max(2, Math.floor(building.h / 16));
+  for (let r = 0; r < rowCount; r++) {
+    for (let c = 0; c < cols; c++) {
+      rows.push({
+        x: building.x + 6 + c * 14,
+        y: building.y + 10 + r * 16,
+      });
+    }
+  }
+  return rows;
+}
+
 export default function StatsBanner() {
   const gridRef = useRef(null);
 
@@ -71,23 +108,67 @@ export default function StatsBanner() {
           viewBox="0 0 1200 160"
           preserveAspectRatio="none"
         >
-          <rect x="0" y="60" width="60" height="100" fill="rgba(255,255,255,0.08)" />
-          <rect x="70" y="30" width="50" height="130" fill="rgba(255,255,255,0.1)" />
-          <rect x="130" y="80" width="40" height="80" fill="rgba(255,255,255,0.07)" />
-          <rect x="180" y="10" width="55" height="150" fill="rgba(255,255,255,0.1)" />
-          <rect x="250" y="55" width="45" height="105" fill="rgba(255,255,255,0.08)" />
-          <rect x="310" y="20" width="60" height="140" fill="rgba(255,255,255,0.1)" />
-          <rect x="400" y="65" width="50" height="95" fill="rgba(255,255,255,0.08)" />
-          <rect x="470" y="35" width="45" height="125" fill="rgba(255,255,255,0.09)" />
-          <rect x="540" y="75" width="40" height="85" fill="rgba(255,255,255,0.07)" />
-          <rect x="610" y="25" width="55" height="135" fill="rgba(255,255,255,0.1)" />
-          <rect x="690" y="60" width="45" height="100" fill="rgba(255,255,255,0.08)" />
-          <rect x="760" y="15" width="55" height="145" fill="rgba(255,255,255,0.1)" />
-          <rect x="840" y="70" width="40" height="90" fill="rgba(255,255,255,0.07)" />
-          <rect x="900" y="40" width="50" height="120" fill="rgba(255,255,255,0.09)" />
-          <rect x="1000" y="20" width="60" height="140" fill="rgba(255,255,255,0.1)" />
-          <rect x="1070" y="55" width="45" height="105" fill="rgba(255,255,255,0.08)" />
-          <rect x="1130" y="10" width="55" height="150" fill="rgba(255,255,255,0.1)" />
+          {/* street lamp posts */}
+          {LAMP_X.map((x) => (
+            <g key={`lamp-${x}`}>
+              <line
+                x1={x}
+                y1="150"
+                x2={x}
+                y2="160"
+                stroke="rgba(255,255,255,0.22)"
+                strokeWidth="2"
+              />
+              <circle cx={x} cy="147" r="3" fill="rgba(255,255,255,0.3)" />
+            </g>
+          ))}
+
+          {BUILDINGS.map((b) => (
+            <g key={`${b.x}-${b.y}`}>
+              <rect
+                x={b.x}
+                y={b.y}
+                width={b.w}
+                height={b.h}
+                fill="rgba(255,255,255,0.09)"
+              />
+              {b.roof && (
+                <>
+                  <rect
+                    x={b.x + b.w / 2 - 5}
+                    y={b.y - 14}
+                    width="10"
+                    height="14"
+                    fill="rgba(255,255,255,0.12)"
+                  />
+                  <line
+                    x1={b.x + b.w / 2}
+                    y1={b.y - 14}
+                    x2={b.x + b.w / 2}
+                    y2={b.y - 24}
+                    stroke="rgba(255,255,255,0.25)"
+                    strokeWidth="1.5"
+                  />
+                  <circle
+                    cx={b.x + b.w / 2}
+                    cy={b.y - 25}
+                    r="2"
+                    fill="rgba(255,255,255,0.35)"
+                  />
+                </>
+              )}
+              {windowRows(b).map((w, i) => (
+                <rect
+                  key={i}
+                  x={w.x}
+                  y={w.y}
+                  width="5"
+                  height="7"
+                  fill="rgba(255,255,255,0.18)"
+                />
+              ))}
+            </g>
+          ))}
         </svg>
 
         <div className="stats__car-wrap">
@@ -126,14 +207,15 @@ export default function StatsBanner() {
               strokeWidth="1"
             />
 
-            {/* cabin / windows */}
+            {/* cabin / windows — shifted toward the rear so the hood (front,
+                headlight side) reads as longer than the trunk overhang */}
             <path
-              d="M85 55 L99 27 Q102 22 108 22 L162 22 Q168 22 171 27 L185 55 Z"
+              d="M60 55 L74 27 Q77 22 83 22 L137 22 Q143 22 146 27 L160 55 Z"
               fill="url(#carGlass)"
               stroke="#c4cddc"
               strokeWidth="1"
             />
-            <line x1="134" y1="23" x2="134" y2="55" stroke="#e9edf6" strokeWidth="3" />
+            <line x1="109" y1="23" x2="109" y2="55" stroke="#e9edf6" strokeWidth="3" />
 
             {/* lights: taillight (rear, left) + headlight (front, right) */}
             <circle cx="32" cy="64" r="3" fill="#ff8a8a" />

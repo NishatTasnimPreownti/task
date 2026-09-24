@@ -67,7 +67,7 @@
   width: 220px;
   height: auto;
   filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.25));
-  animation: stats-drive 11s linear infinite;
+  animation: stats-drive 28s linear infinite;
 }
 
 .stats__car {
@@ -79,7 +79,7 @@
 .stats__wheel {
   transform-box: fill-box;
   transform-origin: center;
-  animation: stats-wheel-spin 0.5s linear infinite;
+  animation: stats-wheel-spin 1.4s linear infinite;
 }
 
 @keyframes stats-drive {

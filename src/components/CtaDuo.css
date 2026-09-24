@@ -1,10 +1,10 @@
-.cta-duo__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.cta-duo__stack {
+  display: flex;
+  flex-direction: column;
   gap: 24px;
 }
 
-.cta-duo__card {
+.cta-duo__banner {
   border-radius: var(--radius-lg);
   padding: 48px 40px;
   min-height: 220px;
@@ -14,63 +14,91 @@
   gap: 22px;
 }
 
-.cta-duo__card--primary {
+.cta-duo__banner--primary {
   background: var(--color-light-bg);
   color: var(--color-text);
 }
 
-.cta-duo__card--primary h3 {
+.cta-duo__banner--primary h3 {
   font-size: 26px;
   font-weight: 800;
   max-width: 360px;
 }
 
-.cta-duo__card--primary .btn-primary {
+.cta-duo__banner--primary .btn-primary {
   align-self: flex-start;
 }
 
-.cta-duo__card--dark {
-  background: #0e1420;
-  color: #fff;
+.cta-duo__banner--driver {
+  /* matches the photo's own background so the seam is invisible */
+  background-color: #efc30c;
+  height: 420px;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 40px 0 0;
+  overflow: hidden;
 }
 
-.cta-duo__badges {
+.cta-duo__driver-text {
+  padding: 48px;
+  max-width: 460px;
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.cta-duo__badges span {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-yellow);
+.cta-duo__driver-photo {
+  height: 100%;
+  width: auto;
+  max-width: 48%;
+  object-fit: contain;
+  object-position: bottom;
+  flex-shrink: 0;
 }
 
-.cta-duo__card--dark h3 {
-  font-size: 26px;
+.cta-duo__eyebrow {
+  color: #1638c9;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cta-duo__driver-text h3 {
+  margin-top: 8px;
+  color: var(--color-primary);
+  font-size: clamp(28px, 3.6vw, 40px);
   font-weight: 800;
+  line-height: 1.15;
 }
 
-.cta-duo__card--dark .btn-outline {
+.cta-duo__driver-text .btn-primary {
+  margin-top: 20px;
   align-self: flex-start;
-  background: transparent;
-  border-color: rgba(255, 255, 255, 0.3);
-  color: #fff;
-}
-
-.cta-duo__card--dark .btn-outline:hover {
-  border-color: #fff;
 }
 
 @media (max-width: 760px) {
-  .cta-duo__grid {
-    grid-template-columns: 1fr;
+  .cta-duo__banner {
+    padding: 36px 28px;
   }
 
-  .cta-duo__card {
-    padding: 36px 28px;
+  .cta-duo__banner--driver {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 24px 0;
+  }
+
+  .cta-duo__driver-text {
+    padding: 0 0 28px;
+    max-width: none;
+    align-items: flex-start;
+  }
+
+  .cta-duo__driver-photo {
+    height: auto;
+    width: 100%;
+    max-width: 320px;
   }
 }

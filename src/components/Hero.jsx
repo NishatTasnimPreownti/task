@@ -1,13 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { CarIcon, TargetIcon, PinIcon, CalendarIcon } from "./icons";
+import { useTypewriter } from "../hooks/useTypewriter";
 import "./Hero.css";
 
 const TRIP_TYPES = ["One Way", "Round Way", "Hourly"];
 
+const HEADLINE_PHRASES = [
+  "Assurance of Effortless Travel",
+  "Luxury Trips with Comfort",
+  "Your Journey Starts Here ...",
+];
+
 export default function Hero() {
   const [activeTab, setActiveTab] = useState("Car Rental");
   const [tripType, setTripType] = useState("One Way");
+  const typedHeadline = useTypewriter(HEADLINE_PHRASES);
 
   const heroRef = useRef(null);
   const headingRef = useRef(null);
@@ -38,7 +46,13 @@ export default function Hero() {
     <section className="hero" ref={heroRef}>
       <div className="container hero__inner">
         <div className="hero__text">
-          <h1 ref={headingRef}>Assurance of Effortless Travel</h1>
+          <h1 ref={headingRef}>
+            <span aria-hidden="true">
+              {typedHeadline}
+              <span className="hero__cursor" />
+            </span>
+            <span className="sr-only">{HEADLINE_PHRASES[0]}</span>
+          </h1>
           <div className="hero__text-side">
             <p ref={paraRef}>
               Choose your city, pick your car and enjoy the journey with

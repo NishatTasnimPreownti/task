@@ -1,78 +1,85 @@
 .app-banner {
-  background: linear-gradient(120deg, #0b2fd6 0%, #2452ff 55%, #3f6dff 100%);
-  border-radius: var(--radius-lg);
-  margin: 0 24px 80px;
-  padding: 64px 56px;
+  position: relative;
+  min-height: 520px;
+  overflow: hidden;
+  /* the photo fades from white to blue over its own top ~60px; give it
+     a matching white backdrop there (a hard split, not a soft gradient)
+     so the photo's own fade is what blends it in, then solid blue
+     everywhere the photo already is blue */
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0,
+    #ffffff 60px,
+    var(--color-primary) 60px,
+    var(--color-primary) 100%
+  );
 }
 
 .app-banner__inner {
+  position: relative;
+  z-index: 2;
   max-width: var(--container-width);
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  padding: 72px 24px;
 }
 
-.app-banner__eyebrow {
-  color: var(--color-yellow);
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+.app-banner__text {
+  max-width: 460px;
 }
 
-.app-banner__inner h2 {
-  margin-top: 12px;
+.app-banner__text h2 {
   color: #fff;
-  font-size: clamp(26px, 3.4vw, 38px);
+  font-size: clamp(32px, 4.2vw, 48px);
   font-weight: 800;
+  line-height: 1.15;
 }
 
-.app-banner__inner p {
-  margin-top: 12px;
+.app-banner__text p {
+  margin-top: 16px;
   color: #dbe3ff;
   max-width: 380px;
 }
 
-.app-banner__inner .btn-yellow {
+.app-banner__text .btn-yellow {
   margin-top: 26px;
 }
 
 .app-banner__phone {
-  width: 160px;
-  height: 220px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 6px solid rgba(255, 255, 255, 0.25);
-  flex-shrink: 0;
-  padding: 10px;
+  position: absolute;
+  top: 0;
+  right: 40px;
+  height: 520px;
+  width: auto;
+  object-fit: contain;
+  object-position: top;
+  z-index: 1;
 }
 
-.app-banner__phone-screen {
-  width: 100%;
-  height: 100%;
-  border-radius: 14px;
-  background: linear-gradient(160deg, #fff, #c9d6ff);
-}
-
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .app-banner {
-    margin: 0 16px 60px;
-    padding: 44px 28px;
+    min-height: unset;
   }
 
   .app-banner__inner {
-    flex-direction: column;
+    padding: 48px 24px 40px;
     text-align: center;
   }
 
-  .app-banner__inner p {
+  .app-banner__text {
+    max-width: none;
+  }
+
+  .app-banner__text p {
     margin-left: auto;
     margin-right: auto;
   }
 
   .app-banner__phone {
-    display: none;
+    position: static;
+    display: block;
+    height: 360px;
+    margin: 0 auto 0;
+    /* crop well past the photo's tilted top edge so the cut line is
+       clean and straight, not sliced through the phone at an angle */
+    clip-path: inset(85px 0 0 0);
   }
 }
